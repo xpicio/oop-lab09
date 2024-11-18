@@ -30,6 +30,9 @@ public final class SimpleGUIWithFileChooser {
     private final JFrame frame = new JFrame(TITLE);
     private final Controller controller = new Controller();
 
+    /**
+     * Default constructor to create a new instance of SimpleGUIWithFileChooser.
+     */
     public SimpleGUIWithFileChooser() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
@@ -50,6 +53,9 @@ public final class SimpleGUIWithFileChooser {
         // save button
         final JButton saveButton = new JButton("Save");
         canvas.add(saveButton, BorderLayout.SOUTH);
+        // init frame
+        frame.setContentPane(canvas);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
          */
@@ -91,9 +97,11 @@ public final class SimpleGUIWithFileChooser {
 
             }
         });
-        // init frame
-        frame.setContentPane(canvas);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    // is just an exercise SimpleGUIWithFileChooser and SimpleGUI are similar -
+    // CPD-OFF
+    private void display() {
         /*
          * Make the frame one fifth the resolution of the screen. This very method is
          * enough for a single screen setup. In case of multiple monitors, the
@@ -119,7 +127,13 @@ public final class SimpleGUIWithFileChooser {
         frame.pack();
     }
 
+    /**
+     * Main entry point for the launcher.
+     * 
+     * @param args the command line parameters
+     */
     public static void main(final String... args) {
-        new SimpleGUIWithFileChooser();
+        new SimpleGUIWithFileChooser().display();
     }
+    // resume CPD analysis - CPD-ON
 }
